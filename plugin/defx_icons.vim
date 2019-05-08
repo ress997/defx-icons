@@ -174,7 +174,7 @@ let s:pattern_matches = extend({
       \ 'Vagrantfile$': {'icon': '', 'color': s:colors.white},
       \ }, get(g:, 'defx_icon_pattern_matches', {}))
 
-let s:exact_dir_matches = {
+let s:exact_dir_matches = extend({
       \ '.git'     : {'icon': '', 'color': s:colors.white},
       \ '.github'  : {'icon': '', 'color': s:colors.white},
       \ 'Desktop'  : {'icon': '', 'color': s:colors.aqua},
