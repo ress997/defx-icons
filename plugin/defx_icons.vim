@@ -5,7 +5,7 @@ endif
 let g:loaded_defx_icons = 1
 
 let s:enable_syntax_highlight = get(g:, 'defx_icons_enable_syntax_highlight', 1)
-let s:column_length = get(g:, 'defx_icons_column_length', 1)
+let s:column_length = get(g:, 'defx_icons_column_length', 2)
 let s:parent_icon = get(g:, 'defx_icons_parent_icon', '')
 let s:directory_icon = get(g:, 'defx_icons_directory_icon', '')
 let s:mark_icon = get(g: , 'defx_icons_mark_icon', '*')
@@ -38,20 +38,20 @@ let s:extensions = extend({
       \ 'styl': {'icon': '', 'color': s:colors.green},
       \ 'sass': {'icon': '', 'color': s:colors.white},
       \ 'scss': {'icon': '', 'color': s:colors.pink},
-      \ 'htm': {'icon': '', 'color': s:colors.darkOrange},
-      \ 'html': {'icon': '', 'color': s:colors.darkOrange},
+      \ 'htm': {'icon': '', 'color': s:colors.darkOrange},
+      \ 'html': {'icon': '', 'color': s:colors.darkOrange},
       \ 'slim': {'icon': '', 'color': s:colors.orange},
       \ 'ejs': {'icon': '', 'color': s:colors.yellow},
-      \ 'css': {'icon': '', 'color': s:colors.blue},
-      \ 'less': {'icon': '', 'color': s:colors.darkBlue},
-      \ 'md': {'icon': '', 'color': s:colors.yellow},
-      \ 'markdown': {'icon': '', 'color': s:colors.yellow},
-      \ 'rmd': {'icon': '', 'color': s:colors.white},
+      \ 'css': {'icon': '', 'color': s:colors.blue},
+      \ 'less': {'icon': '', 'color': s:colors.darkBlue},
+      \ 'md': {'icon': '', 'color': s:colors.yellow},
+      \ 'markdown': {'icon': '', 'color': s:colors.yellow},
+      \ 'rmd': {'icon': '', 'color': s:colors.white},
       \ 'json': {'icon': '', 'color': s:colors.beige},
-      \ 'js': {'icon': '', 'color': s:colors.beige},
+      \ 'js': {'icon': '', 'color': s:colors.beige},
       \ 'jsx': {'icon': '', 'color': s:colors.blue},
       \ 'rb': {'icon': '', 'color': s:colors.red},
-      \ 'php': {'icon': '', 'color': s:colors.purple},
+      \ 'php': {'icon': '', 'color': s:colors.purple},
       \ 'py': {'icon': '', 'color': s:colors.yellow},
       \ 'pyc': {'icon': '', 'color': s:colors.yellow},
       \ 'pyo': {'icon': '', 'color': s:colors.yellow},
@@ -142,10 +142,12 @@ let s:exact_matches = extend({
       \ 'gulpfile.ls': {'icon': '', 'color': s:colors.pink},
       \ 'dropbox': {'icon': '', 'color': s:colors.white},
       \ '.ds_store': {'icon': '', 'color': s:colors.white},
-      \ '.gitconfig': {'icon': '', 'color': s:colors.white},
-      \ '.gitignore': {'icon': '', 'color': s:colors.white},
-      \ '.bashrc': {'icon': '', 'color': s:colors.white},
-      \ '.zshrc': {'icon': '', 'color': s:colors.white},
+      \ '.gitconfig': {'icon': '', 'color': s:colors.white},
+      \ '.gitignore': {'icon': '', 'color': s:colors.white},
+      \ '.bashrc': {'icon': '', 'color': s:colors.white},
+      \ '.zshenv': {'icon': '', 'color': s:colors.white},
+      \ '.zprofile': {'icon': '', 'color': s:colors.white},
+      \ '.zshrc': {'icon': '', 'color': s:colors.white},
       \ '.vimrc': {'icon': '', 'color': s:colors.white},
       \ '.gvimrc': {'icon': '', 'color': s:colors.white},
       \ '_vimrc': {'icon': '', 'color': s:colors.white},
@@ -172,11 +174,26 @@ let s:pattern_matches = extend({
       \ 'Vagrantfile$': {'icon': '', 'color': s:colors.white},
       \ }, get(g:, 'defx_icon_pattern_matches', {}))
 
+let s:exact_dir_matches = {
+      \ '.git'     : {'icon': '', 'color': s:colors.white},
+      \ '.github'  : {'icon': '', 'color': s:colors.white},
+      \ 'Desktop'  : {'icon': '', 'color': s:colors.aqua},
+      \ 'Documents': {'icon': '', 'color': s:colors.aqua},
+      \ 'Downloads': {'icon': '', 'color': s:colors.aqua},
+      \ 'Dropbox'  : {'icon': '', 'color': s:colors.aqua},
+      \ 'Music'    : {'icon': '', 'color': s:colors.aqua},
+      \ 'Pictures' : {'icon': '', 'color': s:colors.aqua},
+      \ 'Public'   : {'icon': '', 'color': s:colors.aqua},
+      \ 'Templates': {'icon': '', 'color': s:colors.aqua},
+      \ 'Videos'   : {'icon': '', 'color': s:colors.aqua},
+      \ }, get(g:, 'defx_icon_exact_dir_matches', {}))
+
+
 function! defx_icons#get() abort
   return {
         \ 'extensions': s:extensions,
         \ 'exact_matches': s:exact_matches,
-        \ 'exact_dir_matches': get(g:, 'defx_icon_exact_dir_matches', {}),
+        \ 'exact_dir_matches': s:exact_dir_matches,
         \ 'pattern_matches': s:pattern_matches,
         \ 'enable_syntax_highlight': s:enable_syntax_highlight,
         \ 'column_length': s:column_length,
